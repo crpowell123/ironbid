@@ -15,10 +15,12 @@ export function ListingCard({ listing }: Props) {
   const inspected = listing.inspection_reports?.[0]?.status === 'verified'
   const isAuction = listing.listing_type === 'auction'
 
-  // Get current high bid if auction
-  const highBid = listing.bids
-    ?.filter(b => b.status === 'active')
-    ?.sort((a, b) => b.amount - a.amount)?.[0]?.amount
+  // Get current high bid if auction — guard against bids being undefined or malformed
+  const highBid = Array.isArray(listing.bids)
+    ? listing.bids
+        .filter(b => b?.status === 'active')
+        .sort((a, b) => b.amount - a.amount)[0]?.amount
+    : undefined
 
   return (
     <Link href={`/listings/${listing.id}`} className="card-hover block group">

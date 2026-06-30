@@ -69,3 +69,18 @@ export function monthlyPayment(price: number, rate = 7.9, months = 60): number {
   const r = rate / 100 / 12
   return Math.round(price * r / (1 - Math.pow(1 + r, -months)))
 }
+
+// Supabase jsonb columns sometimes arrive as strings depending on client/version.
+// This normalizes either case to a real array so .map()/.length never crash.
+export function asArray<T = any>(value: unknown): T[] {
+  if (Array.isArray(value)) return value as T[]
+  if (typeof value === 'string') {
+    try {
+      const parsed = JSON.parse(value)
+      return Array.isArray(parsed) ? parsed : []
+    } catch {
+      return []
+    }
+  }
+  return []
+}
