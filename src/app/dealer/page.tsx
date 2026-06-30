@@ -3,6 +3,8 @@ import { createServerSupabaseClient } from '@/lib/supabase'
 import { formatPrice, equipmentTypeLabel, conditionLabel, timeAgo } from '@/lib/utils'
 import { Plus, TrendingUp, Eye, Gavel, DollarSign, Package, ArrowRight } from 'lucide-react'
 
+export const dynamic = 'force-dynamic'
+
 export default async function DealerDashboard() {
   const supabase = createServerSupabaseClient()
   const DEALER_ID = 'a0000000-0000-0000-0000-000000000001'

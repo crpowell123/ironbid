@@ -3,6 +3,8 @@ import { ListingCard } from '@/components/listing/ListingCard'
 import { Listing } from '@/types'
 import { equipmentTypeLabel } from '@/lib/utils'
 
+export const dynamic = 'force-dynamic'
+
 const EQUIPMENT_TYPES = [
   'semi_tractor', 'excavator', 'bulldozer',
   'trailer_rgn', 'trailer_flatbed', 'crane', 'grader',

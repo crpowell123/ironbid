@@ -9,6 +9,8 @@ import { InspectionPanel } from '@/components/listing/InspectionPanel'
 import { ShieldCheck, MapPin, Calendar, Gauge, Zap, CreditCard, Truck, Star } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
+export const dynamic = 'force-dynamic'
+
 export default async function ListingPage({
   params,
 }: {
